@@ -39,6 +39,11 @@ THE SOFTWARE. */
           var max = settings['max'];
           var input = getInput();
           var counted = doCount(input);
+
+          // if counter hasn't been defined, what are we doing here?
+          if (!counter) {
+              return;
+          }
           
           if (settings['countDirection'] == 'down') {
               var newValue = max - counted;
@@ -64,8 +69,9 @@ THE SOFTWARE. */
        
        var doCount = function(input)
        {
-           for (var character in settings['uncounted']) {
-               input = input.replace(character, '');
+           var uncounted = settings['uncounted'];
+           for(var i=0; i<uncounted.length; i++) {
+               input = input.replace(new RegExp(uncounted[i], 'g'), '');
            }
            
            if (settings['unit'] == 'chars') { 
@@ -77,14 +83,15 @@ THE SOFTWARE. */
                input = input.replace(/\s/g, ' ');
                input = input.split(' ');
                
-               // get rid of any element that contain nothing
+               // don't count any element that contain nothing               
+               var countOffset = 0
                for(var i=0; i<input.length; i++) {
                    if (!input[i].length > 0) {
-                       input.splice(i,1);
+                       countOffset++;
                    }
                }
                
-               return input.length;
+               return input.length - countOffset;
            }
        };
    };

@@ -15,6 +15,23 @@ Usage
 
 The `writeLimit` constructor will bind a `keyup()` event to the textbox that refreshes the character and/or word count for that field. It supports any element with a `value` property.
 
+### Example
+
+    <script type='text/javascript'>
+      $(document).ready(function() {	
+
+          $('#write-limit').writeLimit({
+                  max: 250,
+                  unit: 'words',
+                  counter: $('#counter span')        
+              });
+          });
+    </script>
+    
+    <textarea id='write-limit'></textarea>
+    <p id='counter'><span>250</span> words left</p>
+    
+
 ### Configuration Options
 
  - `max` - (default: `140`) maximum character or words allowed  

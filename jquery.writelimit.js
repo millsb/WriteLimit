@@ -31,6 +31,11 @@ THE SOFTWARE. */
            overClass: 'over-limit',
            uncounted: []
        }, options || {});
+
+       if (elem.data('max')) { settings.max = elem.data('max'); }
+       if (elem.data('unit')) { settings.unit = elem.data('unit'); }
+       if (elem.data('direction')) { settings.direction = elem.data('direction'); }
+       if (elem.data('counter')) { settings.counter = $(elem.data('counter')); }
        
        // Public methods             
        this.refresh = function()

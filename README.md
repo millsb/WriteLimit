@@ -40,6 +40,15 @@ The `writeLimit` constructor will bind a `keyup()` event to the textbox that ref
  - `countDirection` - (default: `'down'`) 'up' or 'down', if you want the counter to increment or decrement
  - `overClass` - (default: `'over-limit'`) Class name to add to the counter when over the limit
  - `uncounted` - (default: `[]`) Optional array of character not to count
+
+### Using Data Attributes
+
+Several configuration options can be specified via HTML5 data attributes. Currently, only `max`, `unit` and `counter` are supported. If using `counter`, you may pass a jQuery selector string.
+
+    <textarea id='write-limit' data-max='140' data-unit='chars' data-counter='#counter'></textarea>
+
+Options specified in data attributes will override those passed into the writeLimit constructor.
+
     
 License
 -------
